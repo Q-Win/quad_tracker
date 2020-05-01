@@ -4,10 +4,9 @@ class RiotService
     @api_key = api_key
   end
 
-  def matchs
+  def matches
     encryptedAccountId = Player.first.account_id
-    get_json("/lol/match/v4/matchlists/by-account/#{encryptedAccountId}?api_key=#{@api_key})"
-
+    get_json("/lol/match/v4/matchlists/by-account/#{encryptedAccountId}?api_key=#{@api_key}")[:matches]
   end
 
   private
@@ -19,7 +18,7 @@ class RiotService
   end
 
   def conn
-      Faraday.new(url: 'https://na1.api.riotgames.com/')
+    Faraday.new(url: 'https://na1.api.riotgames.com/')
   end
 
 end
