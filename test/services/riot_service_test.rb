@@ -23,6 +23,9 @@ class RiotServiceTest < ActionDispatch::IntegrationTest
       player_name: "Doç Brown",
       summoner_id: "WhQTVaq1Yzw7i3Txv91vU0AnGbEN1sWRPyPxg4S_H1bakZM",
       account_id: "c97nIYA4DEUy0GDqyJoxAeD2zuc1yHeONCoacueE6wBCnbo")
+    Match.create(win: true,
+      start_time: 3394205943,
+      game_id: 1587946463079)
   end
 
   test "it can get matches" do
@@ -36,7 +39,7 @@ class RiotServiceTest < ActionDispatch::IntegrationTest
   test "it can get a match data" do
     riot_service = RiotService.new('RGAPI-d966f66a-351a-475b-805a-66a1e918689c')
     match = riot_service.match('3394308322')
-    
+
     assert_not_nil match
     assert match, Hash
   end
