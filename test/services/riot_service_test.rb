@@ -25,12 +25,20 @@ class RiotServiceTest < ActionDispatch::IntegrationTest
       account_id: "c97nIYA4DEUy0GDqyJoxAeD2zuc1yHeONCoacueE6wBCnbo")
   end
 
-  test "it can get a JSON" do
+  test "it can get matches" do
     riot_service = RiotService.new('RGAPI-d966f66a-351a-475b-805a-66a1e918689c')
     matches = riot_service.matches
-    
+
     assert_not_nil matches
     assert matches, Array
+  end
+
+  test "it can get a match data" do
+    riot_service = RiotService.new('RGAPI-d966f66a-351a-475b-805a-66a1e918689c')
+    match = riot_service.match('3394308322')
+    
+    assert_not_nil match
+    assert match, Hash
   end
 
 end

@@ -9,6 +9,10 @@ class RiotService
     get_json("/lol/match/v4/matchlists/by-account/#{encryptedAccountId}?api_key=#{@api_key}")[:matches]
   end
 
+  def match(match_id)
+    get_json("/lol/match/v4/matches/#{match_id}?api_key=#{@api_key}")
+  end
+
   private
 
   def get_json(url)
