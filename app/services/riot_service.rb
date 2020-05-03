@@ -27,7 +27,7 @@ class RiotService
         #filter out matches to see if all 4 are there
         if everyone?(match_data[:participantIdentities])
           win = win?(match_data)
-          
+          Match.create(win: win, game_id: match[:gameId], start_time: match[:timestamp])
         end
       end
     end

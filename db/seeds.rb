@@ -25,3 +25,5 @@ Player.create(name: "Tyson",
   player_name: "Doç Brown",
   summoner_id: "WhQTVaq1Yzw7i3Txv91vU0AnGbEN1sWRPyPxg4S_H1bakZM",
   account_id: "c97nIYA4DEUy0GDqyJoxAeD2zuc1yHeONCoacueE6wBCnbo")
+
+Match.create(win: true, game_id: 1, start_time: 1587241051000)
