@@ -26,7 +26,8 @@ class RiotService
         match_data = match(match[:gameId])
         #filter out matches to see if all 4 are there
         if everyone?(match_data[:participantIdentities])
-          win?(match_data)
+          win = win?(match_data)
+          
         end
       end
     end
@@ -57,7 +58,8 @@ class RiotService
   def win?(match_data)
     participant = match_data[:participantIdentities].find {|p| p[:player][:accountId] == Player.first.account_id }
     participant_id = participant[:participantId]
-
+    participant_data = match_data[:participants].find {|p| p[:participantId] == participant_id }
+    participant_data[:stats][:win]
   end
 
 end
