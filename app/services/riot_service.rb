@@ -24,9 +24,9 @@ class RiotService
       #filter out games that are normals
       if match[:queue] == 400
         match_data = match(match[:gameId])
+        #filter out matches to see if all 4 are there
         if everyone?(match_data[:participantIdentities])
           win?(match_data)
-          debugger
         end
       end
     end
@@ -55,7 +55,9 @@ class RiotService
   end
 
   def win?(match_data)
-    match_data[:participantIdentities]
+    participant = match_data[:participantIdentities].find {|p| p[:player][:accountId] == Player.first.account_id }
+    participant_id = participant[:participantId]
+
   end
 
 end

@@ -26,10 +26,11 @@ class RiotServiceTest < ActionDispatch::IntegrationTest
     Match.create(win: true,
       start_time: 1587946463079,
       game_id: 3394205943)
+    @api_key = 'RGAPI-ed53936c-cd12-4761-ab31-f940cddcc4e9'
   end
 
   test "it can get matches" do
-    riot_service = RiotService.new('RGAPI-d966f66a-351a-475b-805a-66a1e918689c')
+    riot_service = RiotService.new(@api_key)
     matches = riot_service.matches
 
     assert_not_nil matches
@@ -37,7 +38,7 @@ class RiotServiceTest < ActionDispatch::IntegrationTest
   end
 
   test "it can get a match data" do
-    riot_service = RiotService.new('RGAPI-d966f66a-351a-475b-805a-66a1e918689c')
+    riot_service = RiotService.new(@api_key)
     match = riot_service.match('3394308322')
 
     riot_service.update_matches
