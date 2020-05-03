@@ -1,8 +1,8 @@
 class DataController < ApplicationController
 
   def updatematches
-    debugger
-    riot_service = RiotService.new(@api_key)
+    riot_service = RiotService.new('RGAPI-ed53936c-cd12-4761-ab31-f940cddcc4e9')
+    riot_service.update_matches
   end
 
 end
