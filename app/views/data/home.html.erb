@@ -6,7 +6,7 @@
 <ul>
   <% @matches.each do |m| %>
     <li>
-      <%=m.win%>
+      <%=m.win%> Date: <%= get_date(m.start_time)%>
     </li>
   <% end %>
 </ul>

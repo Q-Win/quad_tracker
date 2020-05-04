@@ -7,7 +7,6 @@ class DataController < ApplicationController
     @wins = match_data.where(win: true).count
     @losses = match_data.where(win: false).count
     @win_percent = (@wins.to_f)/(@matches.count.to_f)*100
-    debugger
   end
 
   def updatematches
