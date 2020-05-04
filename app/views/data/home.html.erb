@@ -1,4 +1,12 @@
-<p>Total Matches: <%=@mathces.count%></p>
+<p>Total Matches: <%=@count%></p>
 <p>Total Wins: <%=@wins%></p>
 <p>Total Losses: <%=@losses%></p>
 <p>Win Percent: <%=@win_percent%>%</p>
+
+<ul>
+  <% @matches.each do |m| %>
+    <li>
+      <%=m.win%>
+    </li>
+  <% end %>
+</ul>

@@ -2,6 +2,7 @@ class DataController < ApplicationController
 
   def home
     match_data = Match.all
+    @count = match_data.count
     @matches = match_data.order(start_time: :desc)
     @wins = match_data.where(win: true).count
     @losses = match_data.where(win: false).count
