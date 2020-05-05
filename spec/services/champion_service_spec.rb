@@ -1,10 +1,13 @@
 
 require 'rails_helper'
 
-describe GithubService do
+describe ChampionService do
 
   it "can get a JSON" do
     champion_service = ChampionService.new
-      
-    expect(champion_service.).to be_a(Hash)
+    champion_service.add_champs
+
+    expect(Champion.count).to eq(148)
+    expect(Champion.first.name).to eq("Aatrox")
+  end
 end
