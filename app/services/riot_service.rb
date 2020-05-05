@@ -33,6 +33,13 @@ class RiotService
     end
   end
 
+  def add_champions_to_matches
+    matches_without_champs = Match.includes(:champions).where(champions: {id: nil})
+    debugger
+    #iterate over matches without champs
+    #do get_champs(match_id) to each
+  end
+
   private
 
   def get_json(url)
