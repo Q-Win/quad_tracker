@@ -1,5 +1,10 @@
 class ChampionsController < ApplicationController
 
+  def show
+
+  end
+
+
   def addchamps
     champion_service = ChampionService.new
     champion_service.add_champs

@@ -35,16 +35,15 @@ RSpec.describe Champion, type: :model do
      @match1 = Match.create(win: true,
        start_time: 1587946463079,
        game_id: 3394205943)
-     @matach2 = Match.create(win: true,
+     @match2 = Match.create(win: true,
        start_time: 1587946464079,
        game_id: 3394264149)
-     @matach3 = Match.create(win: false,
+     @match3 = Match.create(win: false,
        start_time: 1587946464080,
        game_id: 1)
-     @matach4 = Match.create(win: false,
+     @match4 = Match.create(win: false,
        start_time: 1587946464081,
        game_id: 2)
-     @api_key = 'RGAPI-66beb7c6-3420-45f0-8c0d-2a3ed45cc6d8'
      @champ = Champion.create(name: "Olaf", champ_id: 2)
      MatchChampion.create(match_id: @match1.id, champion_id: @champ.id, player_id: 1, player_name: "k1dRock")
      MatchChampion.create(match_id: @match3.id, champion_id: @champ.id, player_id: 1, player_name: "k1dRock")
