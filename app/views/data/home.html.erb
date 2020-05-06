@@ -7,6 +7,11 @@
   <% @matches.each do |m| %>
     <li>
       <%=m.win%> Date: <%= get_date(m.start_time)%>
+        <ul>
+          <%m.champions.each do |c|%>
+            <li><%=c.name %></li>
+          <%end%>
+        </ul>
     </li>
   <% end %>
 </ul>

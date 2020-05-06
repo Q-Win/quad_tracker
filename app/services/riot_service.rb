@@ -97,13 +97,16 @@ class RiotService
 
     match_id = Match.find_by(game_id: game_id).id
 
-    MatchChampion.create(match_id: match_id, champion_id: player1_champ_id,player_id: Player.all[0].id, player_name: Player.all[0].name)
 
-    MatchChampion.create(match_id: match_id, champion_id: player2_champ_id,player_id: Player.all[1].id, player_name: Player.all[1].name)
 
-    MatchChampion.create(match_id: match_id, champion_id: player3_champ_id,player_id: Player.all[2].id, player_name: Player.all[2].name)
+    MatchChampion.create(match_id: match_id, champion_id: Champion.find_by(champ_id: player1_champ_id).id ,player_id: Player.all[0].id, player_name: Player.all[0].name)
 
-    MatchChampion.create(match_id: match_id, champion_id: player4_champ_id,player_id: Player.all[3].id, player_name: Player.all[3].name)
+    MatchChampion.create(match_id: match_id, champion_id: Champion.find_by(champ_id: player2_champ_id).id, player_id: Player.all[1].id, player_name: Player.all[1].name)
+
+    MatchChampion.create(match_id: match_id, champion_id: Champion.find_by(champ_id: player3_champ_id).id ,player_id: Player.all[2].id, player_name: Player.all[2].name)
+
+    MatchChampion.create(match_id: match_id, champion_id: Champion.find_by(champ_id: player4_champ_id).id, player_id: Player.all[3].id, player_name: Player.all[3].name)
+
   end
 
 end
