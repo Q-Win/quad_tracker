@@ -35,8 +35,10 @@ class RiotService
 
   def add_champions_to_matches
     matches_without_champs = Match.includes(:champions).where(champions: {id: nil})
-    debugger
     #iterate over matches without champs
+    matches_without_champs.each do |m|
+      get_champions_for_match(m.game_id)
+    end
     #do get_champs(match_id) to each
   end
 
@@ -67,6 +69,41 @@ class RiotService
     participant_id = participant[:participantId]
     participant_data = match_data[:participants].find {|p| p[:participantId] == participant_id }
     participant_data[:stats][:win]
+  end
+
+  def get_champions_for_match(game_id)
+    match_data = match(game_id)
+    player1 = Player.all[0].account_id
+    player2 = Player.all[1].account_id
+    player3 = Player.all[2].account_id
+    player4 = Player.all[3].account_id
+
+    player1_particpant_id = match_data[:participantIdentities].find {|p| p[:player][:accountId] == player1}[:participantId]
+    player2_particpant_id = match_data[:participantIdentities].find {|p| p[:player][:accountId] == player2}[:participantId]
+    player3_particpant_id = match_data[:participantIdentities].find {|p| p[:player][:accountId] == player3}[:participantId]
+    player4_particpant_id = match_data[:participantIdentities].find {|p| p[:player][:accountId] == player4}[:participantId]
+
+    player1_data= match_data[:participants].find {|p| p[:participantId] ==  player1_particpant_id}
+    player1_champ_id = player1_data[:championId]
+
+    player2_data= match_data[:participants].find {|p| p[:participantId] ==  player2_particpant_id}
+    player2_champ_id = player2_data[:championId]
+
+    player3_data= match_data[:participants].find {|p| p[:participantId] ==  player3_particpant_id}
+    player3_champ_id = player3_data[:championId]
+
+    player4_data= match_data[:participants].find {|p| p[:participantId] ==  player4_particpant_id}
+    player4_champ_id = player4_data[:championId]
+
+    match_id = Match.find_by(game_id: game_id).id
+
+    MatchChampion.create(match_id: match_id, champion_id: player1_champ_id,player_id: Player.all[0].id, player_name: Player.all[0].name)
+
+    MatchChampion.create(match_id: match_id, champion_id: player2_champ_id,player_id: Player.all[1].id, player_name: Player.all[1].name)
+
+    MatchChampion.create(match_id: match_id, champion_id: player3_champ_id,player_id: Player.all[2].id, player_name: Player.all[2].name)
+
+    MatchChampion.create(match_id: match_id, champion_id: player4_champ_id,player_id: Player.all[3].id, player_name: Player.all[3].name)
   end
 
 end

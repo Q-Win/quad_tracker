@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   root "data#home"
   get 'updatematches', to: 'data#updatematches'
   get 'addchamps', to: 'champions#addchamps'
+  get 'addchampionstomatches', to: 'champions#addchampionstomatches'
 
 end
