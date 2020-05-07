@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   get 'addchamps', to: 'champions#addchamps'
   get 'addchampionstomatches', to: 'champions#addchampionstomatches'
 
+  resources :champions, only: [:show, :index]
+
 end
