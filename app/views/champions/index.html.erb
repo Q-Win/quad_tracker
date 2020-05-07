@@ -1,0 +1,7 @@
+<ul>
+  <% @champions.each do |c| %>
+    <li>
+      <%=link_to c.name, champion_path(c) %> Win Rate: <%=c.win_rate%>
+    </li>
+  <% end %>
+</ul>
