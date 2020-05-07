@@ -1,7 +1,8 @@
 class ChampionsController < ApplicationController
 
   def show
-
+    @champ = Champion.find(params[:id])
+    @win_rate = @champion.win_rate
   end
 
 

@@ -35,7 +35,7 @@ RSpec.describe Champion, type: :model do
      @match1 = Match.create(win: true,
        start_time: 1587946463079,
        game_id: 3394205943)
-     @match2 = Match.create(win: true,
+     @match2 = Match.create(win: false,
        start_time: 1587946464079,
        game_id: 3394264149)
      @match3 = Match.create(win: false,
@@ -45,15 +45,24 @@ RSpec.describe Champion, type: :model do
        start_time: 1587946464081,
        game_id: 2)
      @champ = Champion.create(name: "Olaf", champ_id: 2)
+     @champ2 = Champion.create(name: "Amumu", champ_id: 32)
      MatchChampion.create(match_id: @match1.id, champion_id: @champ.id, player_id: 1, player_name: "k1dRock")
      MatchChampion.create(match_id: @match3.id, champion_id: @champ.id, player_id: 1, player_name: "k1dRock")
      MatchChampion.create(match_id: @match4.id, champion_id: @champ.id, player_id: 1, player_name: "k1dRock")
+     MatchChampion.create(match_id: @match1.id, champion_id: @champ2.id, player_id: 2, player_name: "Marty MçFly")
+     MatchChampion.create(match_id: @match2.id, champion_id: @champ2.id, player_id: 2, player_name: "Marty MçFly")
    end
 
    it 'can return the win rate for a champion' do
-     win_rate = @champ.win_rate
+     win_rate_olaf = @champ.win_rate
+     win_rate_amumu= @champ2.win_rate
 
-     expect(win_rate).to eq(0.33)
+     expect(win_rate_olaf).to eq(0.33)
+     expect(win_rate_amumu).to eq(0.50)
+   end
+
+   it 'can sort champions by win rates' do
+     expect(Champion.sort_by_win_rate[1].name).to eq("Amumu")
    end
  end
 end
