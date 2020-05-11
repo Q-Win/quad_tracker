@@ -10,7 +10,7 @@ class DataController < ApplicationController
   end
 
   def updatematches
-    riot_service = RiotService.new('RGAPI-e90326ec-e187-4e1f-8d15-c16a882940f4')
+    riot_service = RiotService.new('RGAPI-564e5c01-d390-4103-9279-79977fcc27ae')
     riot_service.update_matches
   end
 
