@@ -12,6 +12,8 @@ class DataController < ApplicationController
   def updatematches
     riot_service = RiotService.new('RGAPI-564e5c01-d390-4103-9279-79977fcc27ae')
     riot_service.update_matches
+    riot_service.add_champions_to_matches
+    redirect_to root_path
   end
 
 

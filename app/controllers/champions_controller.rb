@@ -17,7 +17,7 @@ class ChampionsController < ApplicationController
   end
 
   def addchampionstomatches
-    champion_service = RiotService.new('RGAPI-e90326ec-e187-4e1f-8d15-c16a882940f4')
+    champion_service = RiotService.new('RGAPI-564e5c01-d390-4103-9279-79977fcc27ae')
     champion_service.add_champions_to_matches
     redirect_to root_path
   end
