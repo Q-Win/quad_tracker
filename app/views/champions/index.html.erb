@@ -22,6 +22,10 @@
         <%= "selected='selected'" if @filter == "more-than-10" %>>
         At least 10 game
       </option>
+      <option value="champions?filter=win-rate"
+        <%= "selected='selected'" if @filter == "win-rate" %>>
+        Win Rate
+      </option>
     </select>
   </form>
 

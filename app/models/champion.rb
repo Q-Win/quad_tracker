@@ -15,7 +15,8 @@ class Champion < ApplicationRecord
   end
 
   def self.sort_by_win_rate
-
+    champions = Champion.joins(:matches).group('champions.id').having('COUNT(champions.*) >=1')
+    champions.sort_by {|c| c.win_rate}.reverse
   end
 
 

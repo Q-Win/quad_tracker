@@ -8,6 +8,8 @@ class ChampionsController < ApplicationController
       @champions = Champion.joins(:matches).group('champions.id').having('COUNT(champions.*) >=5')
     elsif @filter == "matches10"
       @champions = Champion.joins(:matches).group('champions.id').having('COUNT(champions.*) >=10')
+    elsif @filter == "win-rate"
+      @champions = Champion.sort_by_win_rate
     elsif @filter == "all"
       @champions = Champion.all
     else
