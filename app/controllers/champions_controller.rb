@@ -1,7 +1,18 @@
 class ChampionsController < ApplicationController
 
   def index
-    @champions = Champion.joins(:matches).group('champions.id').having('COUNT(champions.*) >=0')
+    @filter = params[:filter]
+    if @filter == "matches1"
+      @champions = Champion.joins(:matches).group('champions.id').having('COUNT(champions.*) >=1')
+    elsif @filter == "matches5"
+      @champions = Champion.joins(:matches).group('champions.id').having('COUNT(champions.*) >=5')
+    elsif @filter == "matches10"
+      @champions = Champion.joins(:matches).group('champions.id').having('COUNT(champions.*) >=10')
+    elsif @filter == "all"
+      @champions = Champion.all
+    else
+      @champions = Champion.all
+    end
   end
 
   def show

@@ -1,3 +1,31 @@
+<form>
+    <h3 class="sort-label">Filter: </h3>
+    <select id="filter-champions" onchange="location = this.value;">
+      <option
+        value="champions"
+        <%= "selected='selected'" unless @filter %>>
+        Select
+      </option>
+      <option value="champions"
+        <%= "selected='selected'" if @filter == "all" %>>
+        All Champions
+      </option>
+      <option value="champions?filter=matches1"
+        <%= "selected='selected'" if @filter == "more-than-1" %>>
+        At least 1 game
+      </option>
+      <option value="champions?filter=matches5"
+        <%= "selected='selected'" if @filter == "more-than-5" %>>
+        At least 5 game
+      </option>
+      <option value="champions?filter=matches10"
+        <%= "selected='selected'" if @filter == "more-than-10" %>>
+        At least 10 game
+      </option>
+    </select>
+  </form>
+
+
 <ul>
   <% @champions.each do |c| %>
     <li>
