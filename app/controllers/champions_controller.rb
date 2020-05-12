@@ -1,7 +1,7 @@
 class ChampionsController < ApplicationController
 
   def index
-    @champions = Champion.all
+    @champions = Champion.joins(:matches).group('champions.id').having('COUNT(champions.*) >=0')
   end
 
   def show
